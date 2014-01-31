@@ -12,6 +12,12 @@ serialPort.open(function () {
                 serialCache=Number(serialCache);
                 if(!isNaN(serialCache)){
                     console.log('room temperature is '+serialCache+' degrees Celsius.');
+                    if(serialCache>=27){
+                        console.log('so hot!!!!!');
+                        serialPort.write("hot",function(err,results){
+                            console.log('results ' + results);
+                        })
+                    }
                 }
                 serialCache='';
             }
