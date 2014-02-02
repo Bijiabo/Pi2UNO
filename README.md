@@ -3,3 +3,4 @@
 ###Install
 
     npm install serialport
+    npm install bufferhelper
