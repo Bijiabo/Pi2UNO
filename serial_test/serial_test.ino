@@ -7,7 +7,8 @@
    //read temperature
    int n=analogRead(0);
    float c=n* (5.0 / 1023.0*100);
-   //Serial.println(c);
+   Serial.println('s');
+   Serial.println(c);
    //serial,read
    if(Serial.available()>0){
      int data = Serial.read();
