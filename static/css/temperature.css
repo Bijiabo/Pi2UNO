@@ -1,0 +1,33 @@
+body,div{
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+body{
+    background: #000;
+    min-height: 500px;
+}
+#t-box{
+    height: 500px;
+    width: 500px;
+    border-radius: 50%;
+    background: #0A95E8;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 50px;
+    border: 1px solid #0A95E8;
+    border-top: 1px solid #56B8F3;
+    border-bottom: 1px solid #058AD1;
+    box-shadow: 0 2px 200px #202020;
+}
+.t-front{
+    /*color: #0A95E8;*/
+    color: #131313;
+    text-shadow: 0 2px 1px #56B8F3;
+    font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
+    font-size: 200px;
+    width: 100%;
+    height: 100%;
+    line-height: 500px;
+    text-align: center;
+}

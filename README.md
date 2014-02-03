@@ -2,5 +2,4 @@
 
 ###Install
 
-    npm install serialport
-    npm install bufferhelper
+    npm install serialport express jade socket.io mongo
