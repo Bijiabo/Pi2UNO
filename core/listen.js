@@ -1,5 +1,5 @@
 var SerialPort = require("serialport").SerialPort;
-var serialPort = new SerialPort("/dev/ttyUSB1", {
+var serialPort = new SerialPort("/dev/ttyUSB0", {
     baudrate: 9600//like Serial.begin(9600);
 }, false); // this is the openImmediately flag [default is true]
 var oldStringCache='';
@@ -8,12 +8,16 @@ module.exports=function(callback){
     serialPort.open(function () {
         console.log('open');
         serialPort.on('data', function(data) {
-//            console.log(data);
+            var data2buffer=new Buffer(data);
+            console.log(data2buffer.toString('utf8',0));
+            if(data=='^'){
+                console.log('^^^^^^^^^^^^^^^^');
+            }
             if(data=='s'){
                 if(String(serialCache)!==''){
                     serialCache=Number(serialCache);
                     if(!isNaN(serialCache)){
-                        console.log('room temperature is '+serialCache+' degrees Celsius.');
+                        //console.log('room temperature is '+serialCache+' degrees Celsius.');
 //                        return serialCache;
                         callback(serialCache);
                         if(serialCache>=27){
@@ -30,17 +34,15 @@ module.exports=function(callback){
                 serialCache+=data;
             }
         });
-        /*serialPort.write("ls\n", function(err, results) {
-         console.log('err ' + err);
-         console.log('results ' + results);
-         });
-         var serialWriteTest = function(){
-         serialPort.write(1,function(err,results){
-         setTimeout(function(){
-         serialPort.write(0);
-         },300);
-         })
-         }
-         setInterval(serialWriteTest,1000);*/
+        setInterval(function(){
+            serialPort.write("^1$",function(err,results){
+                console.log('writed');
+            });
+        },500);
+        setInterval(function(){
+            serialPort.write("^0$",function(err,results){
+                console.log('writed');
+            });
+        },750);
     });
 }
